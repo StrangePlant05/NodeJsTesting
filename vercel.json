@@ -6,7 +6,7 @@
           {
             "http": {
               "method": "get",
-              "path": "/socket"
+              "path": "/api/socket"
             }
           }
         ]

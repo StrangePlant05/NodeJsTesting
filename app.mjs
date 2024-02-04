@@ -15,7 +15,7 @@ const __dirname = dirname(__filename);
 
 app.use(express.static(__dirname))
 
-app.get('/', (req, res) => {
+app.get('/api/socket', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
