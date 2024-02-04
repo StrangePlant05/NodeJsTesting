@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form" action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+    <ul id="messages"></ul>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const socket = io();
+        let username = prompt("Enter username", "")
+        while (username == "" || username == null) {
+            username = prompt("Text is blank, please enter a valid username", "");
+        }
+        socket.emit("set username", username);
+
+        // Handle form submission
+        document.getElementById('form').addEventListener('submit', (event) => {
+            event.preventDefault();
+            const message = document.getElementById('m').value;
+            socket.emit("chat message", {message: message, id: username});
+            document.getElementById('m').value = '';
+        });
+
+        // Handle incoming messages
+        socket.on('chat message', (msg) => {
+            // Create a new list item with the message and append it to the messages list
+            const li = document.createElement('li');
+            li.textContent = msg.id + ": " + msg.message;
+            document.getElementById('messages').appendChild(li);
+        });
+
+        socket.on('user connected', (e) => {
+            const li = document.createElement("li");
+            li.textContent = e;
+            document.getElementById('messages').appendChild(li);
+        })
+
+        socket.on('user disconnected', (e) => {
+            const li = document.createElement("li");
+            li.textContent = e;
+            document.getElementById('messages').appendChild(li);
+        })
+    });
+    </script>
+  </body>
+</html>
