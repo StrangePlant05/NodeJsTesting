@@ -1,8 +1,6 @@
 {
-    "functions": {
-      "api/app.mjs": {
-        "runtime": "nodejs14.x"
-      }
-    }
-  }
+  "version": "2",
+  "builds": [{"src": "./api/app.mjs", "use": "@vercel/node"}],
+  "routes": [{ "src": "/(.*)", "dest": "/"}]
+}
   
