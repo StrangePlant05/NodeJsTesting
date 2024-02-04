@@ -6,9 +6,5 @@
     "dependencies": {
         "socket.io": "^4.7.2",
         "express": "^4.17.1"
-    },
-    "scripts": {
-        "start": "node api/app.mjs",
-        "dev": "nodemon api/app.mjs"
     }
 }
