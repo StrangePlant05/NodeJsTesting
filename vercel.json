@@ -1,6 +1,6 @@
 {
     "functions": {
-      "app.mjs": {
+      "/app.mjs": {
         "runtime": "vercel-node@3.2.0"
       }
     }
