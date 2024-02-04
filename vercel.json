@@ -1,7 +1,7 @@
 {
     "functions": {
       "api/socket": {
-        "handler": "api/socket.handler",
+        "handler": "api/socket.js",
         "events": [
           {
             "http": {
