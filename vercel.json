@@ -1,0 +1,16 @@
+{
+    "functions": {
+      "api/socket": {
+        "handler": "api/socket.handler",
+        "events": [
+          {
+            "http": {
+              "method": "get",
+              "path": "/socket"
+            }
+          }
+        ]
+      }
+    }
+  }
+  
